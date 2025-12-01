@@ -48,6 +48,9 @@
         let mulBtn = document.querySelector("#mul-btn");
         let divBtn = document.querySelector("#div-btn");
 
+        let span1 = document.querySelector("#input1Error");
+        let span2 = document.querySelector("#input2Error");
+
         addBtn.addEventListener("click", function () {
             if (CheckValue()){
                 return;
@@ -83,13 +86,17 @@
         function CheckValue() {
             let errorCheck = false;
             input1.style.border = "";
+            span1.style.display = "none";
             input3.style.border = "";
+            span2.style.display = "none";
             if (input1.value === ""){
                 input1.style.border = "1px solid red";
+                span1.style.display = "inline";
                 errorCheck = true;
             }
             if (input3.value === ""){
                 input3.style.border = "1px solid red";
+                span2.style.display = "inline";
                 errorCheck = true;
             }
             if (errorCheck){

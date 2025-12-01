@@ -61,6 +61,11 @@
             padding-left: 4px;
             width: 68%;
         }
+        .myClass{
+            background-color: blueviolet;
+            display: flex;
+            justify-content: space-between;
+        }
     </style>
 </head>
 
@@ -95,11 +100,19 @@
             input.addEventListener("click", changeTaskState);
             input.type = "checkbox";
 
+            let divLine = document.createElement("div");
+            divLine.className = "myClass";
+            div.append(divLine);
+
             let p = document.createElement("p");
             p.innerText = text;
 
-            div.append(input);
-            div.append(p);
+            let deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+
+            divLine.append(input);
+            divLine.append(p);
+            divLine.append(deleteButton);
 
             return div;
         }
