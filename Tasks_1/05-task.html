@@ -39,6 +39,7 @@
         .completed {
             background-color: green;
             color: white;
+            padding-right: 5px;
         }
 
         .completed p {
@@ -61,11 +62,17 @@
             padding-left: 4px;
             width: 68%;
         }
-        .myClass{
-
+        .myClass1{
             display: flex;
             justify-content: space-between;
             width: 100%;
+        }
+        .myClass2{
+            display: flex;
+            gap: 4px;
+        }
+        .deleteBtn{
+            padding: 4px 10px;
         }
     </style>
 </head>
@@ -80,12 +87,25 @@
         <p id="start-message">Нет новых задач</p>
     </div>
 
+  
+
     <script>
         /*
         Задание:
         Сделайте так, чтобы в каждой созданной задаче, после текста задачи создавалась кнопка "Удалить".
         При нажатии на которую вся задача удалялась из списка задач.
         */
+         /*
+         <div task>
+            <div divline>
+                input
+                p
+                deletebutton
+                <div>
+            
+
+            <div>
+         */
         let taskNameInput = document.querySelector("#task-name-input");
         let addTaskButton = document.querySelector("#add-task-btn");
         let startMessage = document.querySelector("#start-message");
@@ -102,17 +122,23 @@
             input.type = "checkbox";
 
             let divLine = document.createElement("div");
-            divLine.className = "myClass";
+            divLine.className = "myClass1";
             div.append(divLine);
+
+            let divForCheckbox = document.createElement("div");
+            divForCheckbox.className = "myClass2";
+            divLine.append(divForCheckbox);
 
             let p = document.createElement("p");
             p.innerText = text;
 
             let deleteButton = document.createElement("button");
+            deleteButton.className = "deleteBtn";
             deleteButton.textContent = "Delete";
+            deleteButton.addEventListener("click", DeleteTask);
 
-            divLine.append(input);
-            divLine.append(p);
+            divForCheckbox.append(input);
+            divForCheckbox.append(p);
             divLine.append(deleteButton);
 
             return div;
@@ -137,6 +163,12 @@
                 alert("введите имя задачи");
             }
         }
+
+        function DeleteTask(){
+            this.parentElement.parentElement.remove();
+            startMessage.style.display = "inline";
+        }
+
     </script>
 </body>
 
