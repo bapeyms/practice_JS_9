@@ -95,17 +95,6 @@
         Сделайте так, чтобы в каждой созданной задаче, после текста задачи создавалась кнопка "Удалить".
         При нажатии на которую вся задача удалялась из списка задач.
         */
-         /*
-         <div task>
-            <div divline>
-                input
-                p
-                deletebutton
-                <div>
-            
-
-            <div>
-         */
         let taskNameInput = document.querySelector("#task-name-input");
         let addTaskButton = document.querySelector("#add-task-btn");
         let startMessage = document.querySelector("#start-message");
@@ -166,7 +155,13 @@
 
         function DeleteTask(){
             this.parentElement.parentElement.remove();
-            startMessage.style.display = "inline";
+            let otherTasks = document.querySelectorAll(".task");
+            if (otherTasks.length === 0){
+                startMessage.hidden = false;
+            }
+            else{
+                startMessage.hidden = true;
+            }
         }
 
     </script>
